@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <fraction name="keyboard_key_width">10%p</fraction>
+    <fraction name="keyboard_key_horizontal_gap">0%p</fraction>
+    <fraction name="keyboard_key_horizontal_gap_for_9_keys">4.25%p</fraction>
+    <fraction name="keyboard_key_vertical_gap">0%p</fraction>
+    <fraction name="keyboard_key_shift_width">15%p</fraction>
+    <fraction name="keyboard_key_left_padding">0%p</fraction>
+    <dimen name="keyboard_key_height">54dip</dimen>
+</resources>

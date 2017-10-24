@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SomaProject</string>
+    <string name="label_subtype_generic">%s</string>
+    <string name="label_subtype_en_GB">English (GB)</string>
+</resources>
