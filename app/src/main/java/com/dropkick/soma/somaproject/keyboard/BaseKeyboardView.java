@@ -8,8 +8,6 @@ import android.view.KeyEvent;
 import android.view.inputmethod.InputConnection;
 
 import com.dropkick.soma.somaproject.R;
-import com.dropkick.soma.somaproject.keyboard.units.korean.KoreanUnit;
-import com.dropkick.soma.somaproject.keyboard.units.LatinUnit;
 import com.dropkick.soma.somaproject.util.SwapPair;
 
 /**
