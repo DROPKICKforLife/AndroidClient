@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/infoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="14dp"
+            android:src="@drawable/test_image_example" />
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/profileImageView"
+            android:textSize="15sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="23dp"
+            tools:text="김준회 심리상담사"/>
+
+        <TextView
+            android:id="@+id/belongTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/nameTextView"
+            android:layout_below="@+id/nameTextView"
+            android:textColor="@color/grayFont"
+            android:layout_marginTop="10dp"
+            android:textSize="11sp"
+            tools:text="서울대학교 졸업"/>
+
+        <ImageButton
+            android:id="@+id/selectButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="44dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/check"/>
+
+        <TextView
+            android:id="@+id/countTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/nameTextView"
+            android:layout_below="@+id/belongTextView"
+            android:layout_marginTop="45dp"
+            android:textSize="9sp"
+            tools:text="총 2,095명이 상담하였습니다."
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/detailInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="23dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/triangle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11dp"
+                android:text="소속병원"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/belongHospitalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:layout_marginLeft="39dp"
+            android:textColor="@color/grayFont"
+            tools:text="서울중앙심리상담센터"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="23dp"
+            >
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/triangle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11dp"
+                android:text="주요경력"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/specListView"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="39dp"
+            tools:listitem="@layout/layout_spec_list_element">
+        </ListView>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/detailIndicator"
+        android:layout_width="35dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="14dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/therapistListPoint"/>
+
+</LinearLayout>

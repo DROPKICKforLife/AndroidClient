@@ -10,29 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".HomeActivity" />
-        <!--
-        <service
-            android:name=".keyboard.KeyboardService"
-            android:permission="android.permission.BIND_INPUT_METHOD">
-            <intent-filter>
-                <action android:name="android.view.InputMethod" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.view.im"
-                android:resource="@xml/method" />
-        </service>
-        -->
-
-        <activity android:name=".ui.DrawActivity"/>
-        <activity android:theme="@style/NoActionBar" android:name=".ui.SplashActivity">
+        <activity android:name=".ui.DrawActivity" />
+        <activity
+            android:name=".ui.SplashActivity"
+            android:theme="@style/NoActionBar"></activity>
+        <activity
+            android:name=".ui.TestListActivity"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.TestListActivity"></activity>
+        <activity android:name=".ui.ProgramListActivity" />
+        <activity
+            android:name=".ui.TherapistSelectActivity"
+            android:theme="@style/NoActionBar"></activity>
+        <activity android:name=".ui.MainActivity"></activity>
     </application>
 
 </manifest>

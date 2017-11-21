@@ -2,54 +2,70 @@ package com.dropkick.soma.somaproject.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.support.v4.view.PagerAdapter
+import android.support.v4.view.ViewPager
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.dropkick.soma.somaproject.R
-import com.dropkick.soma.somaproject.util.GridSpacingItemDecoration
+import com.dropkick.soma.somaproject.util.TextUtils
 import kotlinx.android.synthetic.main.activity_test_list.*
 import kotlinx.android.synthetic.main.layout_test_list_element.view.*
 import java.util.*
 
-class TestListActivity : AppCompatActivity() {
+class TestListActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
-    private val testList: MutableList<TestListData> = ArrayList()
+
+    companion object {
+        val TAG = "TestListActivity"
+    }
+    private val testDataList: MutableList<TestListData> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_list)
-        (1..20).mapTo(testList) { TestListData(it.toString()) }
+        (1..20).mapTo(testDataList) { TestListData("HTP 테스트 ${it}", "항아리 안에 물고기 가족을 그려보세요", R.drawable.test_image_example) }
 
-        recyclerView.adapter = TestListAdapter()
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
-        recyclerView.addItemDecoration(
-                GridSpacingItemDecoration((recyclerView.layoutManager as GridLayoutManager).spanCount, 20, true))
+        viewPager.adapter = TestListAdapter()
+        viewPager.offscreenPageLimit = 2
+        viewPager.addOnPageChangeListener(this)
+        viewPager.clipToPadding = false
+        totalPageNumberView.text = "/${TextUtils.convertNumToAddZeroText(testDataList.size, 2)}"
+        titleTextView.text = "1 번째 테스트"
+        currPageNumberView.text = TextUtils.convertNumToAddZeroText(1, 2)
     }
 
-    private inner class TestListAdapter : RecyclerView.Adapter<TestListViewHolder>() {
+    override fun onPageScrollStateChanged(state: Int) {
+    }
 
-        override fun getItemCount(): Int = testList.size
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+    }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestListViewHolder {
-            val view = layoutInflater.inflate(R.layout.layout_test_list_element, parent, false)
-            val params = view.layoutParams as RecyclerView.LayoutParams
-            val width = parent.measuredWidth
-            params.height = Math.round(width / 2f)
-            view.layoutParams = params
-            return TestListViewHolder(view)
+    override fun onPageSelected(position: Int) {
+        titleTextView.text = "${position + 1} 번째 테스트"
+        currPageNumberView.text = TextUtils.convertNumToAddZeroText(position, 2)
+    }
+
+    private inner class TestListAdapter : PagerAdapter() {
+
+        override fun isViewFromObject(view: View?, obj: Any?): Boolean = obj === view
+        override fun getCount(): Int = testDataList.size
+
+        override fun instantiateItem(container: ViewGroup, position: Int): Any {
+            val view = layoutInflater.inflate(R.layout.layout_test_list_element, null)
+            val testData = testDataList[position]
+
+            view.testTitleView.text = testData.testTitle
+            view.testSubTitleView.text = testData.testSubTitle
+            view.testImageView.setImageResource(testData.testImageRes)
+            container.addView(view, ViewGroup.LayoutParams(298, 460))
+            return view
         }
 
-        override fun onBindViewHolder(holder: TestListViewHolder, position: Int) {
-            holder.testNameView.text = testList[position].testName
+        override fun destroyItem(container: ViewGroup?, position: Int, `object`: Any?) {
+            container?.removeView(`object` as View)
         }
 
     }
-
-    private inner class TestListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val testNameView: TextView = itemView.testNameView
-    }
-
-    data class TestListData(val testName: String)
+    data class TestListData(val testTitle: String, val testSubTitle: String, val testImageRes: Int)
 }
