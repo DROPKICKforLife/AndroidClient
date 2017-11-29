@@ -64,13 +64,20 @@ class TherapistSelectActivity : AppCompatActivity() {
             itemView.belongHospitalTextView.text = item.belongHospital
             itemView.specListView.adapter = ArrayAdapter<String>(this@TherapistSelectActivity,
                     R.layout.layout_spec_list_element, item.specList)
-            Log.i("TherapistSelectActivity", "size is ${item.specList.size}")
             itemView.specListView.isEnabled = false
+            itemView.specListView.divider = null
+            val params = itemView.specListView.layoutParams
+            params.height = 50 + therapistDataList.size * 30
+            itemView.specListView.layoutParams = params
             itemView.setOnClickListener {
                 if (itemView.detailInfoLayout.visibility == GONE) {
                     itemView.detailInfoLayout.visibility = VISIBLE
+                    itemView.detailIndicator.visibility = VISIBLE
+                    itemView.shortIndicator.visibility = GONE
                 } else {
                     itemView.detailInfoLayout.visibility = GONE
+                    itemView.detailIndicator.visibility = GONE
+                    itemView.shortIndicator.visibility = VISIBLE
                 }
                 TransitionManager.beginDelayedTransition(recyclerView)
             }

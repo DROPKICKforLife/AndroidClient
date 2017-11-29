@@ -16,33 +16,30 @@ class PaintModule {
     }
     var paint = Paint()
     var currColor: Int = Color.BLACK
-        private set(value) {
+        set(value) {
             field = value
-            paint.color = field
+            Log.i(TAG, "color is : $value")
+            paint = initPaint()
         }
-
-    private var isTransparent = false
 
     init {
         paint = initPaint()
     }
 
-    fun switchEraserMode() {
+    fun setEraserMode() {
         paint = initPaint()
-        if (!isTransparent) {
-            paint.apply {
-                color = Color.TRANSPARENT
-                strokeWidth = 60f
-                style = Paint.Style.STROKE
-                maskFilter = null
-                xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
-                isAntiAlias = true
-            }
-        } else {
-            paint = initPaint()
+        paint.apply {
+            color = Color.TRANSPARENT
+            strokeWidth = 60f
+            style = Paint.Style.STROKE
+            maskFilter = null
+            xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+            isAntiAlias = true
         }
+    }
 
-        isTransparent = !isTransparent
+    fun setPenMode() {
+        paint = initPaint()
     }
 
     private fun initPaint(): Paint {

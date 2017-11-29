@@ -11,6 +11,7 @@
     <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
     </style>
 
 
@@ -18,5 +19,18 @@
         <item name="android:layout_height">2dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@color/basicBackground</item>
+    </style>
+
+
+    <style name="LightDivider">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/basicBackground</item>
+    </style>
+
+    <style name="GrayDivider">
+        <item name="android:layout_height">2dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">#999999</item>
     </style>
 </resources>

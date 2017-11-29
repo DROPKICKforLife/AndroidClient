@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dropkick.soma.somaproject">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".ui.DrawActivity" />
         <activity
-            android:name=".ui.SplashActivity"
-            android:theme="@style/NoActionBar"></activity>
-        <activity
-            android:name=".ui.TestListActivity"
+            android:name=".ui.DrawActivity"
             android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,11 +20,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.SplashActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".ui.TestListActivity"
+            android:theme="@style/NoActionBar" />
         <activity android:name=".ui.ProgramListActivity" />
         <activity
             android:name=".ui.TherapistSelectActivity"
             android:theme="@style/NoActionBar"></activity>
-        <activity android:name=".ui.MainActivity"></activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".ui.KidInfoActivity"
+            android:theme="@style/NoActionBar">
+        </activity>
+        <activity android:name=".ui.QuestionActivity" android:theme="@style/NoActionBar">
+        </activity>
     </application>
 
 </manifest>
