@@ -4,8 +4,17 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#ffffff</color>
+    <color name="opacityWhite">#deffffff</color>
     <color name="basicBackground">#84BCD8</color>
     <color name="basicFont">#44B1D3</color>
     <color name="grayFont">#333333</color>
     <color name="therapistListPoint">#74C4DD</color>
+    <color name="backgroundTextColor">#c9c9c9</color>
+    <color name="textBorderColor">#CACACA</color>
+
+    <color name="penColorRed">#f11720</color>
+    <color name="penColorYellow">#ffff00</color>
+    <color name="penColorGreen">#39B54A</color>
+    <color name="penColorBlue">#1c89Af</color>
+    <color name="penColorBlack">#000000</color>
 </resources>

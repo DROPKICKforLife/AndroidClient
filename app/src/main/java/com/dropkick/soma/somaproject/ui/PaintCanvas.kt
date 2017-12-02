@@ -1,15 +1,18 @@
 package com.dropkick.soma.somaproject.ui
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
+import android.net.Uri
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.MotionEvent.*
 import android.view.View
+import com.dropkick.soma.somaproject.util.FileUtils
+import java.io.FileOutputStream
 
 /**
  * Created by junhoe on 2017. 11. 9..
@@ -64,8 +67,30 @@ class PaintCanvas: View, View.OnTouchListener {
         currPath?.lineTo(prevX, prevY)
     }
 
-    fun switchEraserMode() {
-        paintModule?.switchEraserMode()
+    fun setEraserMode() {
+        paintModule?.setEraserMode()
+    }
+
+    fun setPenMode() {
+        paintModule?.setPenMode()
+    }
+
+    fun setPenColor(color: Int) {
+        paintModule?.currColor = color
+    }
+
+    fun convertToUri() : Uri? {
+        val bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        draw(canvas)
+        val file = FileUtils.createImageFile(context)
+        Log.i(TAG, "file : $file")
+        Log.i(TAG, "bitmap : $bitmap")
+        val fout =  FileOutputStream(file)
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, fout)
+        fout.flush()
+
+        return Uri.fromFile(file)
     }
 
 

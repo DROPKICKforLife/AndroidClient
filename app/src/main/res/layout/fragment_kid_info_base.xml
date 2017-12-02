@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="아이 이름"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="14dp"
+                android:background="@drawable/simple_border"
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:hint="이곳에 이름을 입력하세요"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="16sp"
+                android:text="성별"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp">
+
+                <Button
+                    android:id="@+id/boyButton"
+                    android:layout_width="66dp"
+                    android:layout_height="66dp"
+                    android:layout_marginLeft="84dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/step1_boy"/>
+
+                <Button
+                    android:id="@+id/girlButton"
+                    android:layout_width="66dp"
+                    android:layout_height="66dp"
+                    android:layout_marginRight="84dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/step1_girl_no"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="생년월일" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/yearEdit"
+                    android:layout_width="88dp"
+                    android:layout_height="43dp"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:hint="년"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:background="@drawable/step1_birthbox"/>
+
+                <EditText
+                    android:id="@+id/monthEdit"
+                    android:layout_width="88dp"
+                    android:layout_height="43dp"
+                    android:layout_marginLeft="29dp"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:hint="월"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:background="@drawable/step1_birthbox"/>
+
+                <EditText
+                    android:id="@+id/dayEdit"
+                    android:layout_width="88dp"
+                    android:layout_height="43dp"
+                    android:layout_marginLeft="29dp"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:hint="일"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:background="@drawable/step1_birthbox"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="그림 실력" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/rankButton1"
+                    android:layout_width="66dp"
+                    android:layout_height="66dp"
+                    android:layout_marginLeft="33dp"
+                    android:background="@drawable/step1_sang"/>
+
+                <Button
+                    android:id="@+id/rankButton2"
+                    android:layout_width="66dp"
+                    android:layout_height="66dp"
+                    android:layout_marginLeft="28dp"
+                    android:background="@drawable/step1_jong_no"/>
+
+                <Button
+                    android:id="@+id/rankButton3"
+                    android:layout_width="66dp"
+                    android:layout_height="66dp"
+                    android:layout_marginLeft="28dp"
+                    android:background="@drawable/step1_ha_no"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="88dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="14dp"
+                android:layout_gravity="right"
+                android:background="@drawable/step1_next"/>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

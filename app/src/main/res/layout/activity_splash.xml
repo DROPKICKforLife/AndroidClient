@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     tools:context="com.dropkick.soma.somaproject.ui.SplashActivity">
+    
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="138dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/logo" />
 
     <TextView
-        android:text="마음 읽는 스케치북"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="엄마와 함계하는 \n미술심리상담"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logoImageView"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:textSize="17sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/basicBackground"/>
+    
+    <ImageView
+        android:id="@+id/splashBearImageView"
+        android:layout_width="185dp"
+        android:layout_height="148dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="42dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/splash_bear"
+        />
+    
+    <com.kakao.usermgmt.LoginButton
+        android:id="@+id/loginButton"
+        android:layout_width="280dp"
+        android:layout_height="97dp"
+        android:layout_marginBottom="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
 
-</LinearLayout>
+</RelativeLayout>

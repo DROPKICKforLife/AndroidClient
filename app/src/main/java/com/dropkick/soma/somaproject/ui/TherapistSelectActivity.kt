@@ -12,33 +12,45 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.bumptech.glide.Glide
+import com.dropkick.soma.somaproject.AppController
 import com.dropkick.soma.somaproject.R
+import com.dropkick.soma.somaproject.network.data.TheraphistData
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_therapist_select.*
 import kotlinx.android.synthetic.main.layout_therapist_list_element.view.*
 
 class TherapistSelectActivity : AppCompatActivity() {
 
 
-    private val therapistDataList: MutableList<TherapistData> = mutableListOf()
-
-    init {
-        therapistDataList.add(TherapistData("김준회", "심리치료사 3급", 2013, "",
-                "서울중앙심리상담센터", listOf("서울대학교 졸업", "1급 국가 공인 자격증", "중앙대 심리학과 외래교수", "중앙대 내과 명예교수")))
-        therapistDataList.add(TherapistData("김준회", "심리치료사 3급", 2013, "",
-                "서울중앙심리상담센터", listOf("서울대학교 졸업", "1급 국가 공인 자격증", "중앙대 심리학과 외래교수", "중앙대 내과 명예교수")))
-        therapistDataList.add(TherapistData("김준회", "심리치료사 3급", 2013, "",
-                "서울중앙심리상담센터", listOf("서울대학교 졸업", "1급 국가 공인 자격증", "중앙대 심리학과 외래교수", "중앙대 내과 명예교수")))
-
+    companion object {
+        const val TAG = "TherapistSelectActivity"
     }
+
+    val networkService by lazy {
+        AppController.retrofitCreate()
+    }
+
+    var disposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_therapist_select)
-        recyclerView.adapter = RecyclerAdapter()
+        disposable = networkService.requestDoctorProfile()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe ({ result ->
+                        Log.i(TAG, "${result.result}")
+                        recyclerView.adapter = RecyclerAdapter(result)
+                    },{ failure ->
+                        Log.i(TAG, "on Failure ${failure.message}")
+                    })
+        recyclerView.adapter = RecyclerAdapter(TheraphistData.Response(emptyList()))
         recyclerView.layoutManager = LinearLayoutManager(this@TherapistSelectActivity)
     }
 
-    inner private class RecyclerAdapter : RecyclerView.Adapter<RecyclerViewHolder>() {
+    inner private class RecyclerAdapter(val result: TheraphistData.Response) : RecyclerView.Adapter<RecyclerViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerViewHolder {
             val view = layoutInflater.inflate(R.layout.layout_therapist_list_element, parent, false)
@@ -46,37 +58,47 @@ class TherapistSelectActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-            holder.bind(therapistDataList[position])
+            holder.bind(result.result[position])
         }
 
-        override fun getItemCount(): Int = therapistDataList.size
+        override fun getItemCount(): Int = result.result.size
 
     }
 
     inner private class RecyclerViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: TherapistData) {
-            //Glide.with(this@TherapistSelectActivity).
-            //        load(item.profileImageURL).into(itemView.profileImageView)
-            itemView.nameTextView.text = "${item.name} 심리상담사"
-            itemView.belongTextView.text = item.belong
-            itemView.countTextView.text = "총 ${item.count}명이 상담하였습니다."
+        fun bind(item: TheraphistData.DetailData) {
+
+            Glide.with(this@TherapistSelectActivity).
+                    load(item.profileimgurl).into(itemView.profileImageView)
+            itemView.nameTextView.text = "${item.doctorname} 심리상담사"
+            itemView.belongTextView.text = item.schoolname
+            itemView.countTextView.text = "총 ${item.doctorcount}명이 상담하였습니다."
             itemView.selectButton.setOnClickListener {  }
-            itemView.belongHospitalTextView.text = item.belongHospital
+            itemView.belongHospitalTextView.text = item.hospitalname
             itemView.specListView.adapter = ArrayAdapter<String>(this@TherapistSelectActivity,
-                    R.layout.layout_spec_list_element, item.specList)
-            Log.i("TherapistSelectActivity", "size is ${item.specList.size}")
+                    R.layout.layout_spec_list_element, item.speclist)
             itemView.specListView.isEnabled = false
+            itemView.specListView.divider = null
+            val params = itemView.specListView.layoutParams
+            params.height = 50 + item.speclist.size * 30
+            itemView.specListView.layoutParams = params
             itemView.setOnClickListener {
                 if (itemView.detailInfoLayout.visibility == GONE) {
                     itemView.detailInfoLayout.visibility = VISIBLE
+                    itemView.detailIndicator.visibility = VISIBLE
+                    itemView.shortIndicator.visibility = GONE
                 } else {
                     itemView.detailInfoLayout.visibility = GONE
+                    itemView.detailIndicator.visibility = GONE
+                    itemView.shortIndicator.visibility = VISIBLE
                 }
                 TransitionManager.beginDelayedTransition(recyclerView)
             }
         }
     }
 
-    data class TherapistData(val name: String, val belong: String, val count: Int, val profileImageURL: String,
-                             val belongHospital: String, val specList: List<String>)
+    override fun onPause() {
+        super.onPause()
+        disposable?.dispose()
+    }
 }

@@ -3,12 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/infoLayout"
+        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="140dp">
 
         <ImageView
             android:id="@+id/profileImageView"
@@ -55,10 +57,20 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/nameTextView"
             android:layout_below="@+id/belongTextView"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="29dp"
             android:textSize="9sp"
             tools:text="총 2,095명이 상담하였습니다."
             />
+        
+        <ImageView
+            android:id="@+id/shortIndicator"
+            android:layout_width="22dp"
+            android:layout_height="12dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/down"/>
 
     </RelativeLayout>
 
@@ -66,6 +78,8 @@
         android:id="@+id/detailInfoLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <LinearLayout
@@ -131,11 +145,14 @@
 
     <View
         android:id="@+id/detailIndicator"
+        android:visibility="gone"
         android:layout_width="35dp"
         android:layout_height="3dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="14dp"
         android:layout_gravity="center_horizontal"
         android:background="@color/therapistListPoint"/>
+
+    <View style="@style/LightDivider"/>
 
 </LinearLayout>

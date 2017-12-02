@@ -7,24 +7,118 @@
     android:orientation="vertical"
     tools:context="com.dropkick.soma.somaproject.ui.DrawActivity">
 
-    <Button
-        android:id="@+id/eraserBtn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="70dp"
+        android:paddingTop="10dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <ImageButton
+            android:id="@+id/penBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/pen"/>
+
+        <ImageButton
+            android:id="@+id/eraserBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/eraser"/>
+
+        <ImageButton
+            android:id="@+id/questionBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/drawing_question"/>
+
+        <ImageButton
+            android:id="@+id/sendBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="118dp"
+            android:background="@drawable/check"
+            />
+
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:background="@color/colorAccent"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/questionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            android:textSize="17sp"
+            android:textColor="@color/backgroundTextColor"
+            tools:text="자신이 생각하는 가장 아름다운 집을 그려보세요."/>
+
+        <ImageView
+            android:id="@+id/tempImageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
 
         <com.dropkick.soma.somaproject.ui.PaintCanvas
             android:id="@+id/paintCanvas"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        
+        <LinearLayout
+            android:layout_width="215dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="72dp"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom">
+
+            <ImageButton
+                android:id="@+id/redColorBtn"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/color_button_red"/>
+
+            <ImageButton
+                android:id="@+id/yellowColorBtn"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/color_button_yellow"/>
+
+            <ImageButton
+                android:id="@+id/greenColorBtn"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/color_button_green"/>
+
+            <ImageButton
+                android:id="@+id/blueColorBtn"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/color_button_blue"/>
+
+            <ImageButton
+                android:id="@+id/blackColorBtn"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/color_button_black"/>
+
+        </LinearLayout>
 
     </FrameLayout>
 

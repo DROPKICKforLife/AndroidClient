@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="16sp"
+        android:text="진단 받은 내용"/>
+
+    <EditText
+        android:id="@+id/receiveEdit"
+        android:layout_width="320dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="10dp"
+        android:padding="14dp"
+        android:gravity="left"
+        android:hint="이전에 병원이나 상담사로부터 진단받은 내용을 적어주세요."
+        android:background="@drawable/simple_border"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textSize="16sp"
+        android:text="진단 받고 싶은 내용"/>
+
+    <EditText
+        android:id="@+id/wantEdit"
+        android:layout_width="320dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="10dp"
+        android:padding="14dp"
+        android:gravity="left"
+        android:hint="특별히 확인받고 싶거나 치료받고 싶은 부분이 있으면 적어주세요."
+        android:background="@drawable/simple_border"/>
+
+</LinearLayout>
