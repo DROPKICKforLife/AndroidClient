@@ -28,7 +28,7 @@
         android:layout_width="320dp"
         android:layout_height="90dp"
         android:layout_marginTop="10dp"
-        android:hint="김준회"
+        android:hint="질문에 대한 답을 입력하세요."
         android:paddingLeft="14dp"
         android:paddingTop="14dp"
         android:gravity="left"

@@ -30,16 +30,6 @@
         android:textColor="@color/grayFont"
         android:text="우리 아이에게 그림에 대해 질문해주세요"/>
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:text="1. 집" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

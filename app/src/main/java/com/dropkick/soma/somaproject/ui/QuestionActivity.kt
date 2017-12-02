@@ -10,6 +10,7 @@ import com.dropkick.soma.somaproject.R
 import kotlinx.android.synthetic.main.activity_question.*
 import kotlinx.android.synthetic.main.fragment_kid_info_base.view.*
 import kotlinx.android.synthetic.main.layout_question_list_element.view.*
+import kotlinx.android.synthetic.main.layout_question_list_header.view.*
 
 class QuestionActivity : AppCompatActivity() {
 
@@ -19,6 +20,7 @@ class QuestionActivity : AppCompatActivity() {
     val questionDataList: MutableList<QuestionListData> = mutableListOf()
 
     init {
+        questionDataList.add(QuestionListData("", -2))
         questionDataList.add(QuestionListData("1. 집에는 누가 살고 있나요", 0))
         questionDataList.add(QuestionListData("2. 이 집의 분위기는 어떤가요?", 0))
         questionDataList.add(QuestionListData("3. 이 집에서 살고 싶나요?", 0))
@@ -31,7 +33,6 @@ class QuestionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_question)
         recyclerView.adapter = QuestionListAdapter()
         recyclerView.layoutManager = LinearLayoutManager(this)
-        titleTextView.text = "1. 집"
     }
 
     inner private class QuestionListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -44,12 +45,18 @@ class QuestionActivity : AppCompatActivity() {
                 val view = layoutInflater.inflate(R.layout.layout_question_list_footer, parent, false)
                 FooterHolder(view)
             }
+            -2 -> {
+                val view = layoutInflater.inflate(R.layout.layout_question_list_header, parent, false)
+                HeaderHolder(view)
+            }
             else -> throw RuntimeException()
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
             if (holder?.itemViewType == 0) {
                 (holder as QuestionListViewHolder).bind(questionDataList[position])
+            } else if (holder?.itemViewType == -2) {
+                (holder as HeaderHolder).bind("1. 집")
             }
         }
 
@@ -64,6 +71,12 @@ class QuestionActivity : AppCompatActivity() {
             itemView.questionTextView.text = item.question
         }
 
+    }
+
+    inner private class HeaderHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(title: String) {
+            itemView.titleTextView.text = title;
+        }
     }
 
     inner private class FooterHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

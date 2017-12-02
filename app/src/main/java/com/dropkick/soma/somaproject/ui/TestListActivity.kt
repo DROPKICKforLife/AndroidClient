@@ -43,7 +43,7 @@ class TestListActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
     override fun onPageSelected(position: Int) {
         titleTextView.text = "${position + 1} 번째 테스트"
-        currPageNumberView.text = TextUtils.convertNumToAddZeroText(position, 2)
+        currPageNumberView.text = TextUtils.convertNumToAddZeroText(position + 1, 2)
     }
 
     private inner class TestListAdapter : PagerAdapter() {

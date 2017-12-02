@@ -1,5 +1,6 @@
 package com.dropkick.soma.somaproject.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -69,6 +70,10 @@ class MainActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener {
         fun bind(data: MainData, pos: Int) {
             itemView.titleTextView.text = data.title
             itemView.weekTextView.text = "WEEK$pos"
+            itemView.setOnClickListener {
+                val intent = Intent(this@MainActivity, TestListActivity::class.java)
+                this@MainActivity.startActivity(intent)
+            }
         }
     }
 }
