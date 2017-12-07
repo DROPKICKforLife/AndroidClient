@@ -21,9 +21,10 @@ class QuestionActivity : AppCompatActivity() {
 
     init {
         questionDataList.add(QuestionListData("", -2))
-        questionDataList.add(QuestionListData("1. 집에는 누가 살고 있나요", 0))
-        questionDataList.add(QuestionListData("2. 이 집의 분위기는 어떤가요?", 0))
-        questionDataList.add(QuestionListData("3. 이 집에서 살고 싶나요?", 0))
+        questionDataList.add(QuestionListData("1. 아이에게 집에는 누가 살고 있는지 물어 봐 주세요", 0))
+        questionDataList.add(QuestionListData("2. 아이에게 집의 분위기는 무엇인지 물어 봐 주세요", 0))
+        questionDataList.add(QuestionListData("3. 아이에게 이 집에서 살고 싶은지 물어봐 주세요", 0))
+        questionDataList.add(QuestionListData("4. 그 외에 일반적인지 않은 점을 발견한다면 왜 그렇게 그렸는지 물어봐 주세요", 0))
         questionDataList.add(QuestionListData("", -1))
     }
 

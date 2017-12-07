@@ -12,6 +12,7 @@ import com.dropkick.soma.somaproject.ui.KidInfoActivity
 import com.dropkick.soma.somaproject.ui.MainActivity
 import com.dropkick.soma.somaproject.ui.SplashActivity
 import com.dropkick.soma.somaproject.ui.TestListActivity
+import com.dropkick.soma.somaproject.util.PrefHelper
 import com.kakao.auth.ErrorCode
 import com.kakao.network.ErrorResult
 import com.kakao.usermgmt.UserManagement
@@ -20,6 +21,9 @@ import com.kakao.usermgmt.response.model.UserProfile
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class KakaoSignupActivity : AppCompatActivity() {
 
@@ -35,10 +39,11 @@ class KakaoSignupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_kakao_signup)
         UserManagement.requestMe(object : MeResponseCallback() {
             override fun onSuccess(result: UserProfile?) {
-                val token = result?.serviceUserId
+                val token = result?.id
+                Log.i(TAG, "${result?.id}")
+                PrefHelper.put(PrefHelper.USER_TOKEN, token!!.toString(), this@KakaoSignupActivity)
                 redirectMainActivity(token!!)
             }
 
@@ -64,6 +69,18 @@ class KakaoSignupActivity : AppCompatActivity() {
     }
 
     private fun redirectMainActivity(token: Long) {
+        /*
+        val call =networkService.requestLogin(Login.Request(token.toString()))
+        call.enqueue(object : Callback<Login.Response> {
+            override fun onResponse(call: Call<Login.Response>?, response: Response<Login.Response>?) {
+                Log.i(TAG, call?.request()?.body().toString())
+            }
+
+            override fun onFailure(call: Call<Login.Response>?, t: Throwable?) {
+            }
+
+        })*/
+
         disposable = networkService.requestLogin(Login.Request(token.toString()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

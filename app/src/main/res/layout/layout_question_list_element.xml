@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageView
@@ -17,10 +17,10 @@
 
         <TextView
             android:id="@+id/questionTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            tools:text="이 집에는 누가 살고 있나요?"/>
+            tools:text="아이에게 집에는 누가 살고 있는지 물어봐 주세요"/>
 
     </LinearLayout>
 

@@ -33,7 +33,7 @@
 
         <TextView
             android:id="@+id/belongTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/nameTextView"
             android:layout_below="@+id/nameTextView"

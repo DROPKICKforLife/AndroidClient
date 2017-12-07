@@ -15,7 +15,9 @@ import com.dropkick.soma.somaproject.util.FileUtils
 import java.io.FileOutputStream
 
 /**
- * Created by junhoe on 2017. 11. 9..
+ * Created by Jun Hoe on 2017. 11. 9..
+ * 유저가 선택한 도구 (여러 가지 색이 들어있는 펜, 지우개)를 통하여 그림을 그릴 수 있는 환경을 제공하는 뷰
+ * 지속적으로 그려지는 경로를 저장해두었다가 비트맵 이미지를 형성, 크기에 맞게 리사이징하여 서버에 전송한다.
  */
 class PaintCanvas: View, View.OnTouchListener {
 

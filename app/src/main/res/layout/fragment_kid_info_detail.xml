@@ -39,4 +39,13 @@
         android:hint="특별히 확인받고 싶거나 치료받고 싶은 부분이 있으면 적어주세요."
         android:background="@drawable/simple_border"/>
 
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="88dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="14dp"
+        android:layout_gravity="right"
+        android:background="@drawable/step1_next"/>
+
 </LinearLayout>

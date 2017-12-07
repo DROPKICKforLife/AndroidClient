@@ -19,19 +19,19 @@ class TestListActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     companion object {
         val TAG = "TestListActivity"
     }
-    private val testDataList: MutableList<TestListData> = ArrayList()
+    private val testDataList: MutableList<TestListData> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_list)
-        (1..20).mapTo(testDataList) { TestListData("HTP 테스트 ${it}", "항아리 안에 물고기 가족을 그려보세요", R.drawable.test_image_example) }
+        (1..5).mapTo(testDataList) { TestListData("불안 증세 치료 $it", "항아리 안에 물고기 가족을 그려보세요", R.drawable.test_image_example) }
 
         viewPager.adapter = TestListAdapter()
         viewPager.offscreenPageLimit = 2
         viewPager.addOnPageChangeListener(this)
         viewPager.clipToPadding = false
         totalPageNumberView.text = "/${TextUtils.convertNumToAddZeroText(testDataList.size, 2)}"
-        titleTextView.text = "1 번째 테스트"
+        titleTextView.text = "1 번째 치료"
         currPageNumberView.text = TextUtils.convertNumToAddZeroText(1, 2)
     }
 
@@ -42,7 +42,7 @@ class TestListActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     }
 
     override fun onPageSelected(position: Int) {
-        titleTextView.text = "${position + 1} 번째 테스트"
+        titleTextView.text = "${position + 1} 번째 치료"
         currPageNumberView.text = TextUtils.convertNumToAddZeroText(position + 1, 2)
     }
 

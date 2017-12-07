@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener {
 
     init {
         mainDataList.add(MainData("집, 나무, 사람을 통한 아이의 정서 검진"))
-        mainDataList.add(MainData("집, 나무, 사람을 통한 아이의 정서 검진"))
-        mainDataList.add(MainData("집, 나무, 사람을 통한 아이의 정서 검진"))
+        mainDataList.add(MainData("표정 선호도를 통한 정서 관리 및 치료"))
+        mainDataList.add(MainData("사물 그림을 통한 아이의 불안 증세 치료"))
         mainDataList.add(MainData("집, 나무, 사람을 통한 아이의 정서 검진"))
         mainDataList.add(MainData("집, 나무, 사람을 통한 아이의 정서 검진"))
     }
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener {
     inner private class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(data: MainData, pos: Int) {
             itemView.titleTextView.text = data.title
-            itemView.weekTextView.text = "WEEK$pos"
+            itemView.weekTextView.text = "WEEK${pos + 1}"
             itemView.setOnClickListener {
                 val intent = Intent(this@MainActivity, TestListActivity::class.java)
                 this@MainActivity.startActivity(intent)

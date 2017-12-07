@@ -3,9 +3,11 @@ package com.dropkick.soma.somaproject.network
 import com.dropkick.soma.somaproject.network.data.TheraphistData
 import com.dropkick.soma.somaproject.network.data.Login
 import com.dropkick.soma.somaproject.network.data.UploadPhotoModel
+import com.dropkick.soma.somaproject.network.data.UserData
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Call
 import retrofit2.http.*
 
 /**
@@ -24,4 +26,8 @@ interface APIInterface {
 
     @GET("recv/viewdoctor")
     fun requestDoctorProfile() : Observable<TheraphistData.Response>
+
+    @POST("recv/useradd")
+    fun postUserInfo(@Body request: UserData.Request) : Observable<UserData.Response>
+
 }
