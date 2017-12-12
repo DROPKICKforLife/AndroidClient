@@ -45,6 +45,10 @@ class SplashActivity : AppCompatActivity() {
             md.update(signature.toByteArray())
             Log.i(TAG, Base64.encodeToString(md.digest(), Base64.DEFAULT))
         }
+
+        titleTextView.setOnClickListener {
+            titleTextView.text = "헷"
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

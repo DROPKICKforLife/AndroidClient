@@ -40,6 +40,12 @@
                         android:background="@color/white"
                         android:text="우리 아이의\n마음을 알다.\n마음을 이해하다."/>
                 </LinearLayout>
+
+                <android.support.v7.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:layout_collapseMode="pin"/>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
@@ -55,6 +61,7 @@
                         android:layout_marginLeft="20dp"/>
 
                     <ImageButton
+                        android:id="@+id/resultButton"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="15dp"
@@ -65,10 +72,6 @@
 
                 </RelativeLayout>
 
-                <android.support.v7.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    app:layout_collapseMode="pin"/>
 
             </android.support.design.widget.CollapsingToolbarLayout>
 

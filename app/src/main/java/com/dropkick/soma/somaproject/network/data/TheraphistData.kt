@@ -7,6 +7,10 @@ object TheraphistData {
 
     data class Response(val result: List<DetailData>)
 
-    data class DetailData(val profileimgurl: String, val doctorname: String, val speclist: List<String>,
+    data class DetailData(val doctor_id: String, val profileimgurl: String, val doctorname: String, val speclist: List<String>,
                           val doctorcount: Int, val hospitalname: String, val schoolname: String)
+
+    data class SelectDoctorData(val userid: String, val doctorid: String)
+
+    data class SelectResponse(val result: String)
 }

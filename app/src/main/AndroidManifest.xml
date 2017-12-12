@@ -19,14 +19,19 @@
         <activity
             android:name=".ui.DrawActivity"
             android:theme="@style/NoActionBar">
+
         </activity>
         <activity android:name=".ui.SplashActivity" android:theme="@style/NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.TestListActivity"
-            android:theme="@style/NoActionBar" />
-        <activity android:name=".ui.ProgramListActivity" />
+            android:theme="@style/NoActionBar" >
+        </activity>
         <activity
             android:name=".ui.TherapistSelectActivity"
             android:theme="@style/NoActionBar" >
@@ -41,11 +46,6 @@
         <activity
             android:name=".ui.QuestionActivity"
             android:theme="@style/NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity

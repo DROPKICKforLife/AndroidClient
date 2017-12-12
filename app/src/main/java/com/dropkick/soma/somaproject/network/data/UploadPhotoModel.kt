@@ -7,5 +7,5 @@ object UploadPhotoModel {
 
     data class Response(val result: Result)
 
-    data class Result(val imgurl: String, val message: String)
+    data class Result(val imgurl: String, val message: String, val identify: String)
 }

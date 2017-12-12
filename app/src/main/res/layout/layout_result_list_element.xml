@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:textSize="18dp"
             android:layout_toRightOf="@+id/triangleImage"
-            android:text="'집' 검사의 결과"
+            android:text="검사 결과 및 치료 진단"
             tools:text="'집' 검사의 결과"/>
 
     </RelativeLayout>

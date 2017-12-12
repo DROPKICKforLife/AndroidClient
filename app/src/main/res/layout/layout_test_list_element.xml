@@ -37,13 +37,25 @@
             android:textSize="11sp"
             tools:text="항아리 안에 물고기 가족을 그려보세요"/>
 
-        <ImageView
-            android:id="@+id/testImageView"
+        <RelativeLayout
             android:layout_width="236dp"
             android:layout_height="236dp"
             android:layout_marginLeft="33dp"
-            android:layout_marginTop="27dp"
-            android:src="@drawable/test_image_example"/>
+            android:layout_marginTop="27dp">
+
+            <ImageView
+                android:id="@+id/testImageView"
+                android:layout_width="236dp"
+                android:layout_height="236dp"/>
+
+            <TextView
+                android:id="@+id/blankImageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_centerInParent="true"
+                android:text="배경 이미지가 없습니다."/>
+        </RelativeLayout>
 
         <ImageButton
             android:id="@+id/startBtn"

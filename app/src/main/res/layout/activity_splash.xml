@@ -15,7 +15,8 @@
         android:background="@drawable/logo" />
 
     <TextView
-        android:text="엄마와 함계하는 \n미술심리상담"
+        android:id="@+id/titleTextView"
+        android:text="엄마와 함께하는 \n미술심리상담"
         android:layout_width="138dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logoImageView"

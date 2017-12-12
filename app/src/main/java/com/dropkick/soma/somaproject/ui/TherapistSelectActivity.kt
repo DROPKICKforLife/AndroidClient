@@ -1,5 +1,6 @@
 package com.dropkick.soma.somaproject.ui
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.dropkick.soma.somaproject.AppController
 import com.dropkick.soma.somaproject.R
 import com.dropkick.soma.somaproject.network.data.TheraphistData
+import com.dropkick.soma.somaproject.util.PrefHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -73,7 +75,19 @@ class TherapistSelectActivity : AppCompatActivity() {
             itemView.nameTextView.text = "${item.doctorname} 심리상담사"
             itemView.belongTextView.text = item.schoolname
             itemView.countTextView.text = "총 ${item.doctorcount}명이 상담하였습니다."
-            itemView.selectButton.setOnClickListener {  }
+            itemView.selectButton.setOnClickListener {
+                val userId = PrefHelper.getString(this@TherapistSelectActivity, PrefHelper.USER_ID)
+                disposable = networkService.selectDoctor(TheraphistData.SelectDoctorData(userId, item.doctor_id))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe ({
+                            result -> if (result.result == "success") {
+                            startActivity(Intent(this@TherapistSelectActivity, MainActivity::class.java))
+                        }
+                        }, {
+                            failure -> Log.i(TAG, "${failure.message}")
+                        })
+            }
             itemView.belongHospitalTextView.text = item.hospitalname
             itemView.specListView.adapter = ArrayAdapter<String>(this@TherapistSelectActivity,
                     R.layout.layout_spec_list_element, item.speclist)

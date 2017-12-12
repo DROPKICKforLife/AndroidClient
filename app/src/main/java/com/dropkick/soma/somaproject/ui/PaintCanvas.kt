@@ -1,10 +1,7 @@
 package com.dropkick.soma.somaproject.ui
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.net.Uri
 import android.util.AttributeSet
 import android.util.Log
@@ -81,13 +78,17 @@ class PaintCanvas: View, View.OnTouchListener {
         paintModule?.currColor = color
     }
 
-    fun convertToUri() : Uri? {
+    fun convertToUri(backgroundBitmap: Bitmap?) : Uri? {
         val bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
+        backgroundBitmap?.run {
+            val paint = Paint()
+            paint.isFilterBitmap = true
+            val rect = Rect(0, 0, width, height)
+            canvas.drawBitmap(backgroundBitmap, null, rect, paint)
+        }
         draw(canvas)
         val file = FileUtils.createImageFile(context)
-        Log.i(TAG, "file : $file")
-        Log.i(TAG, "bitmap : $bitmap")
         val fout =  FileOutputStream(file)
         bitmap.compress(Bitmap.CompressFormat.PNG, 70, fout)
         fout.flush()

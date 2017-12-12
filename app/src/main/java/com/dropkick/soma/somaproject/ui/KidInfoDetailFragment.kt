@@ -38,17 +38,15 @@ class KidInfoDetailFragment : Fragment() {
             val infoTable = (activity as KidInfoActivity).infoTable
             infoTable["prevcontent"] = receiveEdit.text.toString()
             infoTable["hopecontent"] = wantEdit.text.toString()
-            disposable = networkService.postUserInfo(UserData.Request(PrefHelper.getString(PrefHelper.USER_TOKEN, activity), infoTable["childname"].orEmpty(),
-                    infoTable["childsex"]!!.toInt(), infoTable["childability"]!!.toInt(), infoTable["childbirth"].orEmpty(),
-                    infoTable["prevcontent"].orEmpty(), infoTable["hopecontent"].orEmpty()))
-                    .observeOn(AndroidSchedulers.mainThread())
+            Log.i(TAG, "$infoTable")
+            Log.i(TAG, PrefHelper.getString(activity, PrefHelper.USER_ID))
+            disposable = networkService.postUserInfo(UserData.Request(PrefHelper.getString(activity, PrefHelper.USER_ID), infoTable["childname"]!!,
+                    infoTable["childsex"]!!.toInt(), infoTable["childability"]!!.toInt(), infoTable["childbirth"]!!,
+                    infoTable["prevcontent"]!!, infoTable["hopecontent"]!!))
                     .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
                         response ->
-                        Log.i(TAG, PrefHelper.getString(PrefHelper.USER_TOKEN, activity))
-                        infoTable.entries.forEach {
-                            entry -> Log.i(TAG, "value : ${entry.value}")
-                        }
                         if (response.result == "success") {
                             startActivity(Intent(activity, TherapistSelectActivity::class.java))
                         }

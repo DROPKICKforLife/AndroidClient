@@ -9,7 +9,7 @@ import android.content.Context.MODE_PRIVATE
 object PrefHelper {
 
     const val APP = "APP"
-    const val USER_TOKEN = "userToken"
+    const val USER_ID = "userToken"
     fun put(key: String, value: String, context: Context) {
         val pref = context.getSharedPreferences(APP, MODE_PRIVATE)
         val editor = pref.edit()
@@ -17,8 +17,13 @@ object PrefHelper {
         editor.commit()
     }
 
-    fun getString(key: String, context: Context): String {
+    fun getString(context: Context, key: String): String {
         val pref = context.getSharedPreferences(APP, MODE_PRIVATE)
         return pref.getString(key, "")
+    }
+
+    fun getId(context: Context): String {
+        val pref = context.getSharedPreferences(APP, MODE_PRIVATE)
+        return pref.getString(USER_ID, "")
     }
 }
